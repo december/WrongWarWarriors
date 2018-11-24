@@ -10,3 +10,14 @@ You will play an exceptional warrior: brave, tough and fearless. However, this w
 In this funny puzzle game, you can only go toward the direction you are facing on the platform. But the goal of each level is to save the princess in the opposite of your initial direction. You  must utilize the stuffs on your wrong way to approach the princess and save her. The onslaught of boars can make you step backwards. The sea gulls can give you a lift. And the magic mirrors can change your direction to the opposite.  You must use your skills and strategies to get their help and reach the target. 
 
 Our project is developed on Unity. The illustrations and interfaces of our game are original pictures from our team. We design 8 interesting and challenging levels in total. Hope you enjoy our game!
+
+# Team
+Songze Lv
+Weikai Jin
+Weisheng Zheng
+Yunfei Lu
+Ziran Li
+
+# Organization
+The Future Anime & Independent Game Studio, Tsinghua University
+
