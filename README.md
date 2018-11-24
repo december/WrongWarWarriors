@@ -13,9 +13,13 @@ Our project is developed on Unity. The illustrations and interfaces of our game 
 
 # Team
 Songze Lv
+
 Weikai Jin
+
 Weisheng Zheng
+
 Yunfei Lu
+
 Ziran Li
 
 # Organization
