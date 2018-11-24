@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Warrior : MonoBehaviour {
+    private Animator anim;
 
     WarriorFoot Foot;
     public enum State { Step, Air, Stun };
@@ -15,7 +16,8 @@ public class Warrior : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         Foot = GetComponentInChildren<WarriorFoot>();
-	}
+        anim = GetComponentInChildren<Animator>();
+    }
 
     public Vector2 CalcVel()
     {
@@ -52,19 +54,38 @@ public class Warrior : MonoBehaviour {
         switch (state)
         {
             case State.Step:
+                if (anim.GetBool("Rising") || anim.GetBool("Falling"))
+                {
+                    anim.SetTrigger("Landing");
+                    anim.SetBool("Rising", false);
+                    anim.SetBool("Falling", false);
+                }
+
                 if (!reversed)
                 {
                     if (Input.GetKey(KeyCode.D))
+                    {
                         vel.x = moveSpeed;
+                        anim.SetBool("Moving", true);
+                    }
                     else
+                    {
                         vel.x = 0F;
+                        anim.SetBool("Moving", false);
+                    }
                 }
                 else
                 {
                     if (Input.GetKey(KeyCode.A))
+                    {
                         vel.x = -moveSpeed;
+                        anim.SetBool("Moving", true);
+                    }
                     else
+                    {
                         vel.x = 0F;
+                        anim.SetBool("Moving", false);
+                    }
                 }
                 if (Input.GetKeyDown(KeyCode.W))
                 {
@@ -74,14 +95,21 @@ public class Warrior : MonoBehaviour {
                     else
                         vel.y = jumpSpeed;
                     airTime = 0F;
+                    anim.SetBool("Jumping", true);
                 }
                 else
+                {
+                    anim.SetBool("Jumping", false);
                     if (vel.y < 0)
-                    vel.y = 0F;
+                        vel.y = 0F;
+                }
                 break;
             case State.Air:
-                if(airTime <=0.25F && Input.GetKey(KeyCode.W))
+                if (airTime <= 0.25F && Input.GetKey(KeyCode.W))
+                {
+                    anim.SetBool("Jumping", true);
                     vel.y += 12F * Time.deltaTime;
+                }
 
                 vel.y -= 8F * Time.deltaTime;
                 if (!reversed)
@@ -98,13 +126,17 @@ public class Warrior : MonoBehaviour {
                     else
                         vel.x = 0F;
                 }
+                if (vel.y >= 0)
+                    anim.SetBool("Rising", true);
+                else
+                    anim.SetBool("Falling", true);
                 break;
             case State.Stun:
+                anim.SetTrigger("Hitted");
                 vel.y -= 8F * Time.deltaTime;
                 break;
         }
         GetComponent<Rigidbody2D>().velocity = CalcVel();
-        
         //transform.position += (Vector3)vel * Time.deltaTime;
     }
 
@@ -123,5 +155,9 @@ public class Warrior : MonoBehaviour {
         else
             GetComponent<BoxCollider2D>().isTrigger = false;
             */
+    }
+
+    public void FindPrincess(){
+        Debug.Log("Clear!");
     }
 }

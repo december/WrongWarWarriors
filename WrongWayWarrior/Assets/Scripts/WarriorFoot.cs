@@ -19,6 +19,15 @@ public class WarriorFoot : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D collision)
     {
         StepOn = collision.gameObject;
+
+        if (gameObject.tag == "WarriorFoot" && StepOn.tag == "Princess")
+        {
+            Princess pr = StepOn.GetComponent<Princess>();
+            Warrior wr = gameObject.transform.parent.GetComponent<Warrior>();
+            pr.GetSaved();
+            wr.FindPrincess();
+            Debug.Log("Meet");
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)

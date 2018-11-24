@@ -57,6 +57,7 @@ GameObject:
   - component: {fileID: 50786198962274224}
   - component: {fileID: 61171354696632168}
   - component: {fileID: 114814953535460912}
+  - component: {fileID: 95102877840401054}
   m_Layer: 8
   m_Name: Boar
   m_TagString: Boar
@@ -200,6 +201,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.05, y: 1.07}
   m_EdgeRadius: 0
+--- !u!95 &95102877840401054
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1877440177402606}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fe30159b00c964613a35aceb19c33e4c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114384057345304338
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -238,6 +257,7 @@ MonoBehaviour:
   vel: {x: 0, y: 0}
   state: 0
   stunTime: 0
+  reversed: 0
 --- !u!212 &212797765980941532
 SpriteRenderer:
   m_ObjectHideFlags: 1

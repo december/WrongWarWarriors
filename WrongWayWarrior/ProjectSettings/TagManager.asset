@@ -9,6 +9,7 @@ TagManager:
   - Princess
   - Boar
   - Bird
+  - WarriorFoot
   layers:
   - Default
   - TransparentFX

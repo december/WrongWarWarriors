@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Boar : MonoBehaviour {
+    private Animator anim;
 
     WarriorFoot Foot;
     public Vector2 vel = Vector2.zero;
@@ -76,6 +77,7 @@ public class Boar : MonoBehaviour {
     {
         if (Foot.StepOn)
         {
+            anim.SetTrigger("Landing");
             if (Foot.StepOn.tag == "Boar")
             {
                 state = State.Sleep;
@@ -123,8 +125,11 @@ public class Boar : MonoBehaviour {
         if (state == State.Sleep)
         {
             RaycastHit2D s = Physics2D.Raycast(transform.position + new Vector3(-0.5F,-0.15F), Vector3.left, 1.8F);
-            if (s&&s.transform.gameObject.tag == "Warrior")
+            if (s && s.transform.gameObject.tag == "Warrior")
+            {
                 state = State.Move;
+                anim.SetTrigger("SeeWarrior");
+            }
         }
         Move();
 
@@ -133,5 +138,9 @@ public class Boar : MonoBehaviour {
         else
             transform.rotation = Quaternion.identity;
 
+    }
+
+    public void Collision() {
+        anim.SetTrigger("Collision");
     }
 }

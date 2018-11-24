@@ -18,5 +18,6 @@ public class BoarHead : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D collision)
     {
         boar.Bump(collision.gameObject);
+        gameObject.transform.parent.GetComponent<Boar>().Collision();
     }
 }
