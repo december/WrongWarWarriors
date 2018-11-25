@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Bird : MonoBehaviour {
 
+    private Animator anim;
+
     public float vel = 2F;
     public bool reversed = false;
 
@@ -31,4 +33,9 @@ public class Bird : MonoBehaviour {
                 transform.position += Vector3.right * 20F;
         }
 	}
+
+    public void GetStepped(){
+        anim.SetTrigger("Stepped");
+    }
+
 }

@@ -20,6 +20,12 @@ public class WarriorFoot : MonoBehaviour {
     {
         StepOn = collision.gameObject;
 
+        if (StepOn.tag == "Bird")
+        {
+            Bird bd = StepOn.GetComponent<Bird>();
+            bd.GetStepped();
+        }
+
         if (gameObject.tag == "WarriorFoot" && StepOn.tag == "Princess")
         {
             Princess pr = StepOn.GetComponent<Princess>();
