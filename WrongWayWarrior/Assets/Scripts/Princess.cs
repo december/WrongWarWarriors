@@ -13,6 +13,7 @@ public class Princess : MonoBehaviour {
     void Start () {
         randomTime = Random.Range(8, 15);
         lastTime = Time.fixedTime;
+        anim = GetComponentInChildren<Animator>();
     }
 	
 	// Update is called once per frame

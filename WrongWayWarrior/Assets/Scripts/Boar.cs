@@ -77,7 +77,7 @@ public class Boar : MonoBehaviour {
     {
         if (Foot.StepOn)
         {
-            anim.SetTrigger("Landing");
+            anim.SetBool("Landing", true);
             if (Foot.StepOn.tag == "Boar")
             {
                 state = State.Sleep;
@@ -118,17 +118,21 @@ public class Boar : MonoBehaviour {
 	void Start ()
     {
         Foot = GetComponentInChildren<WarriorFoot>();
+        anim = GetComponentInChildren<Animator>();
     }
 	
 	// Update is called once per frame
 	void Update () {
         if (state == State.Sleep)
         {
-            RaycastHit2D s = Physics2D.Raycast(transform.position + new Vector3(-0.5F,-0.15F), Vector3.left, 1.8F);
+            RaycastHit2D s = Physics2D.Raycast(transform.position + new Vector3(-1.5F,-0.5F), Vector3.left, 3.8F);
+            if (s)
+                Debug.Log(s.transform.gameObject.tag);
             if (s && s.transform.gameObject.tag == "Warrior")
             {
-                state = State.Move;
+                //state = State.Move;
                 anim.SetTrigger("SeeWarrior");
+                anim.SetBool("Landing", false);
             }
         }
         Move();
@@ -142,5 +146,9 @@ public class Boar : MonoBehaviour {
 
     public void Collision() {
         anim.SetTrigger("Collision");
+    }
+
+    public void BeginDashing(){
+        state = State.Move;
     }
 }
