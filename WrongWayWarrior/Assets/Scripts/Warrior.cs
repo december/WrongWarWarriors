@@ -158,6 +158,7 @@ public class Warrior : MonoBehaviour {
     }
 
     public void FindPrincess(){
-        Debug.Log("Clear!");
+        //Debug.Log("Clear!");
+        anim.SetTrigger("Saving");
     }
 }

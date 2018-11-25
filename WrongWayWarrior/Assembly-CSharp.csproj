@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\BeginDash.cs" />
+    <Compile Include="Assets\Scripts\BeStepped.cs" />
     <Compile Include="Assets\Scripts\Bird.cs" />
     <Compile Include="Assets\Scripts\Boar.cs" />
     <Compile Include="Assets\Scripts\BoarHead.cs" />

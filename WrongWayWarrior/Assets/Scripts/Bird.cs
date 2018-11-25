@@ -8,6 +8,7 @@ public class Bird : MonoBehaviour {
 
     public float vel = 2F;
     public bool reversed = false;
+    public bool stunned = false;
 
     public Vector2 CalcVel()
     {
@@ -17,25 +18,30 @@ public class Bird : MonoBehaviour {
 	void Start () {
 		
 	}
-	
-	// Update is called once per frame
-	void Update () {
-        if (reversed)
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (!stunned)
         {
-            transform.position += Vector3.right * vel * Time.deltaTime;
-            if (transform.position.x >= 10)
-                transform.position += Vector3.left * 20F;
+            if (reversed)
+            {
+                transform.position += Vector3.right * vel * Time.deltaTime;
+                if (transform.position.x >= 10)
+                    transform.position += Vector3.left * 20F;
+            }
+            else
+            {
+                transform.position += Vector3.left * vel * Time.deltaTime;
+                if (transform.position.x <= -10)
+                    transform.position += Vector3.right * 20F;
+            }
         }
-        else
-        {
-            transform.position += Vector3.left * vel * Time.deltaTime;
-            if (transform.position.x <= -10)
-                transform.position += Vector3.right * 20F;
-        }
-	}
+    }
 
     public void GetStepped(){
         anim.SetTrigger("Stepped");
+        stunned = true;
     }
 
 }
